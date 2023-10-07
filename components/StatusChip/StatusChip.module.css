@@ -1,0 +1,44 @@
+.chip {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.3rem;
+  width: fit-content;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-weight: 400;
+  font-size: 1rem;
+  border-radius: 500px;
+}
+
+.chip div {
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 50%;
+}
+
+.error {
+  background-color: rgb(253, 234, 234);
+  color: rgb(237, 76, 73);
+}
+.error div {
+  background: rgb(237, 76, 73);
+}
+
+.updating {
+  background-color: rgb(255, 246, 234);
+  color: rgb(255, 144, 38);
+}
+.updating div {
+  background: rgba(255, 144, 38, 1);
+}
+
+.ok {
+  background-color: rgba(234, 246, 240, 1);
+  color: rgba(66, 165, 111, 1);
+}
+.ok div {
+  background: rgba(66, 165, 111, 1);
+}

@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import { useReducer } from 'react';
+import StatusChip, { Status } from '../components/StatusChip';
 import Table from '../components/Table';
 import data from '../series.json';
 
@@ -22,10 +23,11 @@ const reducer = (state: number[], action: { type: 'add' | 'remove' | 'selectAll'
 
 const Home: NextPage = () => {
   const [selected, dispatch] = useReducer(reducer, []);
+  const transformedData = data.map(item => ({ ...item, status: <StatusChip status={item.status as Status} /> }))
 
   return (
     <Table
-      data={data || []}
+      data={transformedData}
       columns={[{ name: "select" },
       { name: "status" },
       { name: "name" },
