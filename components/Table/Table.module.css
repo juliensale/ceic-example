@@ -1,0 +1,15 @@
+.table {
+  display: grid;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(232, 231, 237, 1);
+  overflow: hidden;
+}
+
+.table > div {
+  padding: 0.75rem 1rem;
+}
+
+.darkCell {
+  background: rgba(246, 245, 248, 1);
+}

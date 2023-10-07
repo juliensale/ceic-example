@@ -12,7 +12,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
 			</header>
 			<div className={styles.navContainer}>
 				<Navbar />
-				<div>
+				<div className={styles.content}>
 					{children}
 				</div>
 			</div>
