@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import { useReducer } from 'react';
 import Table from '../components/Table';
+import data from '../series.json';
 
 const reducer = (state: number[], action: { type: 'add' | 'remove' | 'selectAll' | 'removeAll', value?: number }) => {
   if (action.type === 'selectAll') return data.map(item => item.id);
@@ -19,24 +20,6 @@ const reducer = (state: number[], action: { type: 'add' | 'remove' | 'selectAll'
   return Array.from(set);
 }
 
-const data = [
-  {
-    id: 1,
-    name: "test1",
-    status: 2,
-  },
-  {
-    id: 2,
-    name: "test2",
-    status: 1,
-  },
-  {
-    id: 3,
-    name: "test3",
-    status: 3,
-  }
-]
-
 const Home: NextPage = () => {
   const [selected, dispatch] = useReducer(reducer, []);
 
@@ -46,6 +29,9 @@ const Home: NextPage = () => {
       columns={[{ name: "select" },
       { name: "status" },
       { name: "name" },
+      { name: "last_update" },
+      { name: "series_id", label: "Series ID" },
+      { name: "timepoints" }
       ]}
       selected={selected}
       dispatch={dispatch}

@@ -1,0 +1,402 @@
+[
+  {
+    "id": 1,
+    "status": 2,
+    "name": "Carex lapponica O.F. Lang",
+    "last_update": "3/20/2023",
+    "series_id": 5.9852544,
+    "timepoints": 6.7792915
+  },
+  {
+    "id": 2,
+    "status": 0,
+    "name": "Sedella leiocarpa H. Sharsm.",
+    "last_update": "10/5/2023",
+    "series_id": 6.6799085,
+    "timepoints": 5.3334414
+  },
+  {
+    "id": 3,
+    "status": 2,
+    "name": "Oligomeris Camb.",
+    "last_update": "4/10/2023",
+    "series_id": 6.7413429,
+    "timepoints": 5.3021711
+  },
+  {
+    "id": 4,
+    "status": 0,
+    "name": "Cladina submitis (A. Evans) Hale & W.L. Culb.",
+    "last_update": "8/27/2023",
+    "series_id": 5.1410883,
+    "timepoints": 5.7836157
+  },
+  {
+    "id": 5,
+    "status": 1,
+    "name": "Verbena brasiliensis Vell.",
+    "last_update": "11/15/2022",
+    "series_id": 5.8466957,
+    "timepoints": 6.2092995
+  },
+  {
+    "id": 6,
+    "status": 2,
+    "name": "Rhododendron ×bakeri (Lemmon & McKay) Hume (pro sp.)",
+    "last_update": "12/3/2022",
+    "series_id": 5.1381333,
+    "timepoints": 5.3390305
+  },
+  {
+    "id": 7,
+    "status": 2,
+    "name": "Scutellaria antirrhinoides Benth.",
+    "last_update": "2/2/2023",
+    "series_id": 6.5748149,
+    "timepoints": 5.7734718
+  },
+  {
+    "id": 8,
+    "status": 1,
+    "name": "Schiedea helleri Sherff",
+    "last_update": "3/24/2023",
+    "series_id": 6.2517116,
+    "timepoints": 5.6623298
+  },
+  {
+    "id": 9,
+    "status": 0,
+    "name": "Astragalus nothoxys A. Gray",
+    "last_update": "4/8/2023",
+    "series_id": 5.1697755,
+    "timepoints": 5.1901564
+  },
+  {
+    "id": 10,
+    "status": 2,
+    "name": "Taxus floridana Nutt. ex Chapm.",
+    "last_update": "3/26/2023",
+    "series_id": 5.9186053,
+    "timepoints": 6.8370191
+  },
+  {
+    "id": 11,
+    "status": 3,
+    "name": "Clusia rosea Jacq.",
+    "last_update": "6/16/2023",
+    "series_id": 6.978448,
+    "timepoints": 5.7001523
+  },
+  {
+    "id": 12,
+    "status": 1,
+    "name": "Peltula cylindrica Wetmore",
+    "last_update": "1/14/2023",
+    "series_id": 5.3482903,
+    "timepoints": 5.6724789
+  },
+  {
+    "id": 13,
+    "status": 3,
+    "name": "Thelypteris guadalupensis (Wikstr.) Proctor",
+    "last_update": "9/29/2023",
+    "series_id": 6.6441675,
+    "timepoints": 5.5825284
+  },
+  {
+    "id": 14,
+    "status": 3,
+    "name": "Trifolium andersonii A. Gray ssp. beatleyae J.M. Gillett",
+    "last_update": "11/7/2022",
+    "series_id": 5.6310091,
+    "timepoints": 6.046043
+  },
+  {
+    "id": 15,
+    "status": 1,
+    "name": "Stellaria cuspidata Willd. ex Schltdl.",
+    "last_update": "2/3/2023",
+    "series_id": 6.8722953,
+    "timepoints": 6.3120618
+  },
+  {
+    "id": 16,
+    "status": 0,
+    "name": "Tragopogon lamottei Rouy",
+    "last_update": "3/29/2023",
+    "series_id": 6.9548134,
+    "timepoints": 6.7225341
+  },
+  {
+    "id": 17,
+    "status": 1,
+    "name": "Koeleria Pers.",
+    "last_update": "7/5/2023",
+    "series_id": 6.491403,
+    "timepoints": 5.0525394
+  },
+  {
+    "id": 18,
+    "status": 1,
+    "name": "Lycopodium sitchense Rupr.",
+    "last_update": "12/7/2022",
+    "series_id": 6.428896,
+    "timepoints": 5.1535581
+  },
+  {
+    "id": 19,
+    "status": 2,
+    "name": "Capsicum baccatum L. var. baccatum",
+    "last_update": "8/4/2023",
+    "series_id": 5.3064923,
+    "timepoints": 5.5146528
+  },
+  {
+    "id": 20,
+    "status": 1,
+    "name": "Carex bushii Mack.",
+    "last_update": "8/29/2023",
+    "series_id": 5.7016186,
+    "timepoints": 6.600358
+  },
+  {
+    "id": 21,
+    "status": 1,
+    "name": "Psidium guineense Sw.",
+    "last_update": "3/3/2023",
+    "series_id": 5.8388881,
+    "timepoints": 6.3964025
+  },
+  {
+    "id": 22,
+    "status": 2,
+    "name": "Labordia sessilis A. Gray",
+    "last_update": "6/6/2023",
+    "series_id": 5.3585291,
+    "timepoints": 5.0984181
+  },
+  {
+    "id": 23,
+    "status": 1,
+    "name": "Climacium F. Weber & D. Mohr ex Mohr",
+    "last_update": "3/13/2023",
+    "series_id": 5.2511416,
+    "timepoints": 5.2553415
+  },
+  {
+    "id": 24,
+    "status": 2,
+    "name": "Inula salicina L.",
+    "last_update": "1/24/2023",
+    "series_id": 5.3818435,
+    "timepoints": 6.6564353
+  },
+  {
+    "id": 25,
+    "status": 1,
+    "name": "Eleocharis debilis Kunth",
+    "last_update": "5/4/2023",
+    "series_id": 6.7563216,
+    "timepoints": 6.7849324
+  },
+  {
+    "id": 26,
+    "status": 2,
+    "name": "Cordylanthus kingii S. Watson ssp. helleri (Ferris) T.I. Chuang & Heckard",
+    "last_update": "4/11/2023",
+    "series_id": 5.4872966,
+    "timepoints": 5.4717059
+  },
+  {
+    "id": 27,
+    "status": 1,
+    "name": "Argemone corymbosa Greene ssp. arenicola G.B. Ownbey",
+    "last_update": "10/4/2023",
+    "series_id": 6.8407134,
+    "timepoints": 5.1266019
+  },
+  {
+    "id": 28,
+    "status": 0,
+    "name": "Matelea radiata Correll",
+    "last_update": "1/9/2023",
+    "series_id": 6.8953185,
+    "timepoints": 6.793904
+  },
+  {
+    "id": 29,
+    "status": 3,
+    "name": "Bidens tenuisecta A. Gray",
+    "last_update": "8/11/2023",
+    "series_id": 5.7921314,
+    "timepoints": 6.6545406
+  },
+  {
+    "id": 30,
+    "status": 1,
+    "name": "Cuscuta veatchii Brandegee",
+    "last_update": "10/12/2022",
+    "series_id": 6.062713,
+    "timepoints": 6.0656121
+  },
+  {
+    "id": 31,
+    "status": 0,
+    "name": "Astrolepis sinuata (Lag. ex Sw.) Benham & Windham ssp. sinuata",
+    "last_update": "4/30/2023",
+    "series_id": 6.7872285,
+    "timepoints": 6.9202425
+  },
+  {
+    "id": 32,
+    "status": 0,
+    "name": "Rhus trilobata Nutt.",
+    "last_update": "8/19/2023",
+    "series_id": 5.9845179,
+    "timepoints": 6.2337761
+  },
+  {
+    "id": 33,
+    "status": 2,
+    "name": "Vitellaria paradoxa C.F. Gaertn.",
+    "last_update": "12/21/2022",
+    "series_id": 5.9541075,
+    "timepoints": 5.918452
+  },
+  {
+    "id": 34,
+    "status": 0,
+    "name": "Phleum phleoides (L.) H. Karst.",
+    "last_update": "3/1/2023",
+    "series_id": 6.3045297,
+    "timepoints": 5.599027
+  },
+  {
+    "id": 35,
+    "status": 3,
+    "name": "Poa cuspidata Nutt.",
+    "last_update": "5/9/2023",
+    "series_id": 6.3586505,
+    "timepoints": 6.6533592
+  },
+  {
+    "id": 36,
+    "status": 0,
+    "name": "Epilobium leptocarpum Hausskn.",
+    "last_update": "11/13/2022",
+    "series_id": 6.2519473,
+    "timepoints": 6.8766035
+  },
+  {
+    "id": 37,
+    "status": 3,
+    "name": "Sanicula sandwicensis A. Gray",
+    "last_update": "4/11/2023",
+    "series_id": 6.0496689,
+    "timepoints": 5.9340671
+  },
+  {
+    "id": 38,
+    "status": 3,
+    "name": "Elaphoglossum spathulatum (Bory) T. Moore",
+    "last_update": "12/2/2022",
+    "series_id": 6.6584406,
+    "timepoints": 6.837045
+  },
+  {
+    "id": 39,
+    "status": 2,
+    "name": "Valeriana acutiloba Rydb. var. acutiloba",
+    "last_update": "9/30/2023",
+    "series_id": 5.5756654,
+    "timepoints": 6.2175135
+  },
+  {
+    "id": 40,
+    "status": 1,
+    "name": "Rhizocarpon bolanderi (Tuck.) Herre",
+    "last_update": "7/10/2023",
+    "series_id": 6.7313055,
+    "timepoints": 6.2605822
+  },
+  {
+    "id": 41,
+    "status": 0,
+    "name": "Senecio eremophilus Richardson var. eremophilus",
+    "last_update": "3/27/2023",
+    "series_id": 6.6127074,
+    "timepoints": 6.4119315
+  },
+  {
+    "id": 42,
+    "status": 1,
+    "name": "Consolea nashii (Britton) A. Berger",
+    "last_update": "3/5/2023",
+    "series_id": 5.9803962,
+    "timepoints": 5.3745952
+  },
+  {
+    "id": 43,
+    "status": 1,
+    "name": "Grimmia torquata Hornsch.",
+    "last_update": "6/12/2023",
+    "series_id": 5.5626118,
+    "timepoints": 6.7812073
+  },
+  {
+    "id": 44,
+    "status": 1,
+    "name": "Asplenium radicans L.",
+    "last_update": "6/15/2023",
+    "series_id": 5.8896412,
+    "timepoints": 6.9277453
+  },
+  {
+    "id": 45,
+    "status": 2,
+    "name": "Magnolia grandiflora L.",
+    "last_update": "10/3/2023",
+    "series_id": 5.103927,
+    "timepoints": 6.4162305
+  },
+  {
+    "id": 46,
+    "status": 1,
+    "name": "Hedyosmum arborescens Sw.",
+    "last_update": "11/15/2022",
+    "series_id": 5.6216995,
+    "timepoints": 5.6634346
+  },
+  {
+    "id": 47,
+    "status": 1,
+    "name": "Juniperus cedrus Webb & Berthel.",
+    "last_update": "4/15/2023",
+    "series_id": 5.0023524,
+    "timepoints": 6.7569844
+  },
+  {
+    "id": 48,
+    "status": 0,
+    "name": "Euthamia graminifolia (L.) Nutt. var. hirtipes (Fernald) C.E.S. Taylor & R.J. Taylor",
+    "last_update": "11/11/2022",
+    "series_id": 6.5641201,
+    "timepoints": 6.1431722
+  },
+  {
+    "id": 49,
+    "status": 0,
+    "name": "Leptosiphon nuttallii (A. Gray) J.M. Porter & L.A. Johnson ssp. nuttallii",
+    "last_update": "5/19/2023",
+    "series_id": 6.4539446,
+    "timepoints": 6.4601915
+  },
+  {
+    "id": 50,
+    "status": 0,
+    "name": "Halodule Endl.",
+    "last_update": "12/12/2022",
+    "series_id": 6.3536666,
+    "timepoints": 6.9530696
+  }
+]
