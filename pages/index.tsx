@@ -42,8 +42,11 @@ const Home: NextPage = () => {
 
   return (
     <Table
-      data={data}
-      columns={["select", "status", "name"]}
+      data={data || []}
+      columns={[{ name: "select" },
+      { name: "status" },
+      { name: "name" },
+      ]}
       selected={selected}
       dispatch={dispatch}
     />

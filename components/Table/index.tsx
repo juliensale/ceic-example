@@ -2,11 +2,11 @@ import { ReactNode } from 'react';
 import Checkbox from '../forms/Checkbox';
 import styles from './Table.module.css';
 
-type BaseObject = Record<string, ReactNode> & { id: number };
+export type BaseObject = Record<string, ReactNode> & { id: number };
 
 type Props<T extends BaseObject> = {
 	data: T[];
-	columns: (Extract<keyof T, string> | 'select')[];
+	columns: { name: (Extract<keyof T, string> | 'select'), label?: string }[];
 	selected?: number[];
 	dispatch: React.Dispatch<{
 		type: 'add' | 'remove' | 'selectAll' | 'removeAll';
@@ -15,7 +15,7 @@ type Props<T extends BaseObject> = {
 };
 
 const Table = <T extends BaseObject>({ data, columns, selected, dispatch }: Props<T>): ReactNode => {
-	if (columns.includes("select") && !selected) throw new Error("Select column requires `selected` object.")
+	if (columns.some(col => col.name === "select") && !selected) throw new Error("Select column requires `selected` object.")
 	return (
 		<div className={styles.table} style={{
 			gridTemplateColumns: `repeat(${columns.length}, 1fr)`
@@ -27,11 +27,11 @@ const Table = <T extends BaseObject>({ data, columns, selected, dispatch }: Prop
 					const allSelected = selected!.length === data.length;
 
 					return (<div
-						key={col}
+						key={col.name}
 						className={styles.darkCell}
 					>
 						{
-							col === "select"
+							col.name === "select"
 								? <Checkbox
 									id="select-all"
 									checked={allSelected}
@@ -39,7 +39,7 @@ const Table = <T extends BaseObject>({ data, columns, selected, dispatch }: Prop
 									checkTitle='Select all'
 									uncheckTitle='Unselect all'
 								/>
-								: col.charAt(0).toUpperCase() + col.slice(1)
+								: col.label || col.name.charAt(0).toUpperCase() + col.name.slice(1).replaceAll("_", " ")
 						}
 					</div>)
 				}
@@ -56,13 +56,13 @@ const Table = <T extends BaseObject>({ data, columns, selected, dispatch }: Prop
 								className={idx % 2 === 1 ? styles.darkCell : undefined}
 							>
 								{
-									col === "select"
+									col.name === "select"
 										? <Checkbox
 											id={`${obj.id}-${col}`}
 											checked={checked}
 											onChange={() => dispatch({ type: checked ? 'remove' : 'add', value: obj.id, })}
 										/>
-										: obj[col]
+										: obj[col.name]
 								}
 							</div>)
 						}
