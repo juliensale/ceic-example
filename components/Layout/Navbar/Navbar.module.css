@@ -1,0 +1,28 @@
+.container {
+  background-color: #eeeef2;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0.75rem;
+  width: 175px;
+}
+.container > svg {
+  width: 5rem;
+  height: 3rem;
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+.list li {
+  width: 100%;
+  display: flex;
+}
