@@ -26,9 +26,13 @@ const DropDownList: FC<{ children: ReactNode | ReactNode[] }> = ({ children }) =
 	)
 }
 
-export const DropDownItem: FC<{ children: string }> = ({ children }) => {
+export const DropDownItem: FC<{ children: string, value: string }> = ({ children, value }) => {
+	const { setOpen, setValue } = useContext(dropDownContext);
 	return (
-		<li className={styles.item}>
+		<li className={styles.item} onClick={() => {
+			setValue(value);
+			setOpen(false);
+		}}>
 			{children}
 		</li>
 	)
@@ -39,15 +43,18 @@ const { Provider } = dropDownContext;
 type DropDownProps = {
 	title: string;
 	children: ReactNode | ReactNode[];
+	setValue: (value: string) => void;
+	value: string;
 }
-const DropDown: FC<DropDownProps> = ({ title, children }) => {
+const DropDown: FC<DropDownProps> = ({ title, children, value, setValue }) => {
 	const [open, setOpen] = useState<boolean>(false);
 
 	const contextValue: DropDownContext = useMemo(() => ({
 		open,
 		setOpen,
-		value: '',
-	}), [open])
+		setValue,
+		value,
+	}), [open, setValue, value])
 
 	return (
 		<Provider value={contextValue}>

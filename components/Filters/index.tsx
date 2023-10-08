@@ -1,12 +1,19 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import DropDown, { DropDownItem } from '../forms/DropDown'
 
 const Filters: FC = () => {
+	// autorefresh in seconds
+	const [autoRefresh, setAutoRefresh] = useState<number>(30)
 	return (
 		<div>
-			<DropDown title="Test drop down">
-				<DropDownItem>Test item 1</DropDownItem>
-				<DropDownItem>Test item 2</DropDownItem>
+			<DropDown title={`${autoRefresh} sec`} value={autoRefresh.toString()} setValue={(value) => {
+				setAutoRefresh(parseInt(value));
+			}}>
+				<DropDownItem value="10">10 sec</DropDownItem>
+				<DropDownItem value="20">20 sec</DropDownItem>
+				<DropDownItem value="30">30 sec</DropDownItem>
+				<DropDownItem value="45">45 sec</DropDownItem>
+				<DropDownItem value="60">60 sec</DropDownItem>
 			</DropDown>
 		</div>
 	)
