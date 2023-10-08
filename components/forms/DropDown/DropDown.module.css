@@ -4,6 +4,8 @@
   display: flex;
   flex-direction: column;
   width: fit-content;
+  position: relative;
+  user-select: none;
 }
 
 .title {
@@ -46,6 +48,11 @@
 }
 
 .list {
+  position: absolute;
+  z-index: 10;
+  background-color: white;
+  top: 2.3rem;
+
   list-style-type: none;
   display: none;
   margin: 0;
