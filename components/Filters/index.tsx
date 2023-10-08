@@ -6,9 +6,12 @@ const Filters: FC = () => {
 	const [autoRefresh, setAutoRefresh] = useState<number>(30)
 	return (
 		<div>
-			<DropDown title={`${autoRefresh} sec`} value={autoRefresh.toString()} setValue={(value) => {
-				setAutoRefresh(parseInt(value));
-			}}>
+			<DropDown
+				title={`${autoRefresh} sec`}
+				label="Autorefresh"
+				value={autoRefresh.toString()} setValue={(value) => {
+					setAutoRefresh(parseInt(value));
+				}}>
 				<DropDownItem value="10">10 sec</DropDownItem>
 				<DropDownItem value="20">20 sec</DropDownItem>
 				<DropDownItem value="30">30 sec</DropDownItem>

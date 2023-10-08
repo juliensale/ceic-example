@@ -18,18 +18,14 @@
   border: none;
   font-size: 1rem;
   padding: 0.5rem 0.7rem;
-  padding-right: calc(0.7rem + 1rem + 0.3rem);
+  padding-right: calc(0.7rem + 1rem + 3rem);
   margin: 0;
   border: 1px solid #e8e7ed;
   border-radius: 5px;
   height: 2.3rem;
-  min-width: 200px;
   text-align: left;
   cursor: pointer;
   transition: 0.2s;
-}
-.title button:hover {
-  background-color: #fbfbfb;
 }
 .title svg {
   position: absolute;
@@ -45,6 +41,21 @@
 
 .titleOpen svg {
   transform: rotate(180deg);
+}
+.title label {
+  color: rgba(136, 75, 143, 1);
+  padding: 0 0.4rem;
+  font-size: 1rem;
+  position: absolute;
+  background: white;
+  top: -0.8rem;
+  left: 0.6rem;
+  transition: 0.2s;
+}
+.title:hover label,
+.titleOpen label {
+  left: 0.7rem;
+  font-size: 0.9rem;
 }
 
 .list {

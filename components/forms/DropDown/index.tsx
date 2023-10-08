@@ -5,10 +5,11 @@ import styles from './DropDown.module.css'
 import dropDownContext, { DropDownContext } from './DropDownContext'
 
 
-const DropDownTitle: FC<{ text: string }> = ({ text }) => {
+const DropDownTitle: FC<{ text: string, label?: string }> = ({ text, label }) => {
 	const { open, setOpen } = useContext(dropDownContext);
 	return (
 		<div className={mergeClasses(styles.title, open ? styles.titleOpen : undefined)} onClick={() => setOpen(!open)}>
+			{label && <label>{label}</label>}
 			<button>
 				{text}
 			</button>
@@ -42,11 +43,12 @@ const { Provider } = dropDownContext;
 
 type DropDownProps = {
 	title: string;
+	label?: string;
 	children: ReactNode | ReactNode[];
 	setValue: (value: string) => void;
 	value: string;
 }
-const DropDown: FC<DropDownProps> = ({ title, children, value, setValue }) => {
+const DropDown: FC<DropDownProps> = ({ title, label, children, value, setValue }) => {
 	const [open, setOpen] = useState<boolean>(false);
 
 	const contextValue: DropDownContext = useMemo(() => ({
@@ -59,7 +61,7 @@ const DropDown: FC<DropDownProps> = ({ title, children, value, setValue }) => {
 	return (
 		<Provider value={contextValue}>
 			<div className={styles.container}>
-				<DropDownTitle text={title} />
+				<DropDownTitle text={title} label={label} />
 				<DropDownList>
 					{children}
 				</DropDownList>
