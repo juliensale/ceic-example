@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import { useReducer } from 'react';
+import Filters from '../components/Filters';
 import SearchBar from '../components/SearchBar';
 import StatusChip, { Status } from '../components/StatusChip';
 import Table from '../components/Table';
@@ -29,6 +30,7 @@ const Home: NextPage = () => {
   return (
     <>
       <SearchBar />
+      <Filters />
       <Table
         data={transformedData}
         columns={[{ name: "select" },
