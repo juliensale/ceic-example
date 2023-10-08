@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import { useReducer } from 'react';
+import SearchBar from '../components/SearchBar';
 import StatusChip, { Status } from '../components/StatusChip';
 import Table from '../components/Table';
 import data from '../series.json';
@@ -26,18 +27,21 @@ const Home: NextPage = () => {
   const transformedData = data.map(item => ({ ...item, status: <StatusChip status={item.status as Status} /> }))
 
   return (
-    <Table
-      data={transformedData}
-      columns={[{ name: "select" },
-      { name: "status" },
-      { name: "name" },
-      { name: "last_update" },
-      { name: "series_id", label: "Series ID" },
-      { name: "timepoints" }
-      ]}
-      selected={selected}
-      dispatch={dispatch}
-    />
+    <>
+      <SearchBar />
+      <Table
+        data={transformedData}
+        columns={[{ name: "select" },
+        { name: "status" },
+        { name: "name" },
+        { name: "last_update" },
+        { name: "series_id", label: "Series ID" },
+        { name: "timepoints" }
+        ]}
+        selected={selected}
+        dispatch={dispatch}
+      />
+    </>
   )
 }
 
