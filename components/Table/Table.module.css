@@ -12,6 +12,8 @@
 
 .cell {
   text-wrap: nowrap;
+  display: flex;
+  align-items: center;
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
