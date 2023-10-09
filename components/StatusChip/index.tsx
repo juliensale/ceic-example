@@ -2,7 +2,7 @@ import { FC, useMemo } from 'react';
 import mergeClasses from '../../utils/mergeClasses';
 import styles from './StatusChip.module.css';
 
-export type Status = 0 | 1 | 2 | 3;
+export type Status = 0 | 1 | 2;
 
 const StatusChip: FC<{ status: Status }> = ({ status }) => {
 	const className = useMemo(() => {

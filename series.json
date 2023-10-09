@@ -81,7 +81,7 @@
   },
   {
     "id": 11,
-    "status": 3,
+    "status": 2,
     "name": "Clusia rosea Jacq.",
     "last_update": "6/16/2023",
     "series_id": 6.978448,
@@ -97,7 +97,7 @@
   },
   {
     "id": 13,
-    "status": 3,
+    "status": 2,
     "name": "Thelypteris guadalupensis (Wikstr.) Proctor",
     "last_update": "9/29/2023",
     "series_id": 6.6441675,
@@ -105,7 +105,7 @@
   },
   {
     "id": 14,
-    "status": 3,
+    "status": 2,
     "name": "Trifolium andersonii A. Gray ssp. beatleyae J.M. Gillett",
     "last_update": "11/7/2022",
     "series_id": 5.6310091,
@@ -225,7 +225,7 @@
   },
   {
     "id": 29,
-    "status": 3,
+    "status": 2,
     "name": "Bidens tenuisecta A. Gray",
     "last_update": "8/11/2023",
     "series_id": 5.7921314,
@@ -273,7 +273,7 @@
   },
   {
     "id": 35,
-    "status": 3,
+    "status": 2,
     "name": "Poa cuspidata Nutt.",
     "last_update": "5/9/2023",
     "series_id": 6.3586505,
@@ -289,7 +289,7 @@
   },
   {
     "id": 37,
-    "status": 3,
+    "status": 2,
     "name": "Sanicula sandwicensis A. Gray",
     "last_update": "4/11/2023",
     "series_id": 6.0496689,
@@ -297,7 +297,7 @@
   },
   {
     "id": 38,
-    "status": 3,
+    "status": 2,
     "name": "Elaphoglossum spathulatum (Bory) T. Moore",
     "last_update": "12/2/2022",
     "series_id": 6.6584406,
