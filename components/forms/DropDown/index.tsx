@@ -1,6 +1,7 @@
 import { FC, ReactNode, useContext, useMemo, useState } from 'react'
 import mergeClasses from '../../../utils/mergeClasses'
 import Chevron from '../../icons/Chevron'
+import Checkbox from '../Checkbox'
 import styles from './DropDown.module.css'
 import dropDownContext, { DropDownContext } from './DropDownContext'
 
@@ -28,12 +29,35 @@ const DropDownList: FC<{ children: ReactNode | ReactNode[] }> = ({ children }) =
 }
 
 export const DropDownItem: FC<{ children: string, value: string }> = ({ children, value }) => {
-	const { setOpen, setValue } = useContext(dropDownContext);
+	const { type, setOpen, setValue } = useContext(dropDownContext);
+	if (type !== 'select') return null;
+
 	return (
 		<li className={styles.item} onClick={() => {
-			setValue(value);
+			(setValue as (value: string) => void)(value);
 			setOpen(false);
 		}}>
+			{children}
+		</li>
+	)
+}
+
+export const DropDownCheckbox: FC<{ children: string, value: string }> = ({ children, value }) => {
+	const { type, setValue, value: ddValue } = useContext(dropDownContext);
+	const checked = useMemo(() => ddValue.includes(value), [ddValue, value]);
+
+	if (type !== 'checkbox') return null;
+
+
+	return (
+		<li className={styles.item} onClick={() => {
+			(setValue as (value: string[]) => void)(
+				checked
+					? (ddValue as string[]).filter(v => v !== value)
+					: [...(ddValue as string[]), value]
+			)
+		}}>
+			<Checkbox id={value} onChange={() => { }} checked={checked} />
 			{children}
 		</li>
 	)
@@ -45,18 +69,25 @@ type DropDownProps = {
 	title: string;
 	label?: string;
 	children: ReactNode | ReactNode[];
+} & ({
+	type: 'select'
 	setValue: (value: string) => void;
 	value: string;
-}
-const DropDown: FC<DropDownProps> = ({ title, label, children, value, setValue }) => {
+} | {
+	type: 'checkbox';
+	setValue: (value: string[]) => void;
+	value: string[];
+})
+const DropDown: FC<DropDownProps> = ({ title, label, children, value, setValue, type }) => {
 	const [open, setOpen] = useState<boolean>(false);
 
 	const contextValue: DropDownContext = useMemo(() => ({
 		open,
 		setOpen,
+		type,
 		setValue,
 		value,
-	}), [open, setValue, value])
+	}), [open, type, setValue, value])
 
 	return (
 		<Provider value={contextValue}>
