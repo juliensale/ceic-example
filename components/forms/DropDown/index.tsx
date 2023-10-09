@@ -1,5 +1,6 @@
-import { FC, ReactNode, useContext, useMemo, useState } from 'react'
+import { FC, ReactNode, useContext, useMemo, useRef, useState } from 'react'
 import mergeClasses from '../../../utils/mergeClasses'
+import useFocusOut from '../../../utils/useFocusOut'
 import Chevron from '../../icons/Chevron'
 import Checkbox from '../Checkbox'
 import styles from './DropDown.module.css'
@@ -89,9 +90,14 @@ const DropDown: FC<DropDownProps> = ({ title, label, children, value, setValue, 
 		value,
 	}), [open, type, setValue, value])
 
+	const containerRef = useRef(null);
+	useFocusOut([containerRef], () => {
+		setOpen(false);
+	})
+
 	return (
 		<Provider value={contextValue}>
-			<div className={styles.container}>
+			<div className={styles.container} ref={containerRef}>
 				<DropDownTitle text={title} label={label} />
 				<DropDownList>
 					{children}
