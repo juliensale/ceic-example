@@ -3,7 +3,9 @@
   width: 100%;
   border-radius: 10px;
   border: 1px solid rgba(232, 231, 237, 1);
-  overflow: hidden;
+  overflow: auto;
+  /* screen - header - search bar - margin - filters button - margin - content padding bottom */
+  max-height: calc(100vh - 4rem - 2.7rem - 1rem - 2.3rem - 1rem - 1.5rem);
 }
 
 .table > div {
