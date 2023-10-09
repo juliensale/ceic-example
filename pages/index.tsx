@@ -1,13 +1,14 @@
+import axios from 'axios';
 import type { NextPage } from 'next';
-import { useReducer, useState } from 'react';
+import { useMemo, useReducer, useState } from 'react';
+import useSWR from 'swr';
 import Filters from '../components/Filters';
 import SearchBar from '../components/SearchBar';
 import StatusChip, { Status } from '../components/StatusChip';
 import Table from '../components/Table';
 import { ColumnOrdering } from '../components/Table/ColumnTitle';
-import data from '../series.json';
 
-const reducer = (state: number[], action: { type: 'add' | 'remove' | 'selectAll' | 'removeAll', value?: number }) => {
+const getReducer = (data: TransformedDataObject[]) => (state: number[], action: { type: 'add' | 'remove' | 'selectAll' | 'removeAll', value?: number }) => {
   if (action.type === 'selectAll') return data.map(item => item.id);
   if (action.type === 'removeAll') return [];
 
@@ -24,7 +25,15 @@ const reducer = (state: number[], action: { type: 'add' | 'remove' | 'selectAll'
   return Array.from(set);
 }
 
-type Data = {
+type DataObject = {
+  status: Status;
+  id: number;
+  name: string;
+  last_update: string;
+  series_id: number;
+  timepoints: number;
+}
+type TransformedDataObject = {
   status: JSX.Element;
   id: number;
   name: string;
@@ -34,12 +43,17 @@ type Data = {
 }
 
 const Home: NextPage = () => {
-  const [selected, dispatch] = useReducer(reducer, []);
-  const transformedData: Data[] = data.map(item => ({ ...item, status: <StatusChip status={item.status as Status} /> }))
-  const [order, setOrder] = useState<ColumnOrdering<Data>>({
+  const { data } = useSWR<DataObject[]>('/api/series', (url: string) => axios.get(url).then((res) => res.data))
+  const transformedData: TransformedDataObject[] | undefined = useMemo(
+    () => data?.map(item => ({ ...item, status: <StatusChip status={item.status} /> }))
+    , [data]
+  )
+
+  const [order, setOrder] = useState<ColumnOrdering<TransformedDataObject>>({
     column: 'status',
     order: 'desc',
   })
+  const [selected, dispatch] = useReducer(getReducer(transformedData || []), []);
 
   return (
     <>

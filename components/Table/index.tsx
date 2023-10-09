@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import mergeClasses from '../../utils/mergeClasses';
+import Loader from '../Loader';
 import Checkbox from '../forms/Checkbox';
 import ColumnTitle, { ColumnOrdering } from './ColumnTitle';
 import styles from './Table.module.css';
@@ -7,7 +8,7 @@ import styles from './Table.module.css';
 export type BaseObject = Record<string, ReactNode> & { id: number };
 
 type Props<T extends BaseObject> = {
-	data: T[];
+	data: T[] | undefined;
 	columns: { name: (Extract<keyof T, string> | 'select'), label?: string, width?: string }[];
 	order: {
 		column: Extract<keyof T, string>;
@@ -23,6 +24,9 @@ type Props<T extends BaseObject> = {
 
 const Table = <T extends BaseObject>({ data, columns, order, setOrder, selected, dispatch }: Props<T>): ReactNode => {
 	if (columns.some(col => col.name === "select") && !selected) throw new Error("Select column requires `selected` object.")
+
+	if (!data) return <Loader size="1.5rem" />;
+
 	return (
 		<div className={styles.table} style={{
 			gridTemplateColumns: columns.map(c => c.width || "auto").join(" ")
