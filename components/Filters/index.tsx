@@ -9,8 +9,9 @@ type FiltersProps = {
 	setAutoRefresh: (value: number) => void;
 	statusFilter: string[];
 	setStatusFilter: (value: string[]) => void;
+	refresh: () => void;
 }
-const Filters: FC<FiltersProps> = ({ autoRefresh, setAutoRefresh, statusFilter, setStatusFilter }) => {
+const Filters: FC<FiltersProps> = ({ autoRefresh, setAutoRefresh, statusFilter, setStatusFilter, refresh }) => {
 	return (
 		<div className={styles.container}>
 			<DropDown title="Status" type="checkbox" value={statusFilter} setValue={(value) => setStatusFilter(value)}>
@@ -19,7 +20,7 @@ const Filters: FC<FiltersProps> = ({ autoRefresh, setAutoRefresh, statusFilter, 
 				<DropDownCheckbox value="2">Up to date</DropDownCheckbox>
 			</DropDown>
 			<div className={styles.subContainer}>
-				<IconButton><RefreshIcon /></IconButton>
+				<IconButton onClick={refresh}><RefreshIcon /></IconButton>
 				<DropDown
 					title={`${autoRefresh} sec`}
 					type="select"
