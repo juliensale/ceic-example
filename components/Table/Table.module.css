@@ -26,4 +26,16 @@
 }
 .firstRow {
   font-weight: 500;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+.firstRow svg {
+  position: absolute;
+  right: 1rem;
+  height: 0.7rem;
+  width: 0.7rem;
+}
+.asc svg {
+  transform: rotate(180deg);
 }

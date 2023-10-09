@@ -1,9 +1,10 @@
 import type { NextPage } from 'next';
-import { useReducer } from 'react';
+import { useReducer, useState } from 'react';
 import Filters from '../components/Filters';
 import SearchBar from '../components/SearchBar';
 import StatusChip, { Status } from '../components/StatusChip';
 import Table from '../components/Table';
+import { ColumnOrdering } from '../components/Table/ColumnTitle';
 import data from '../series.json';
 
 const reducer = (state: number[], action: { type: 'add' | 'remove' | 'selectAll' | 'removeAll', value?: number }) => {
@@ -23,9 +24,22 @@ const reducer = (state: number[], action: { type: 'add' | 'remove' | 'selectAll'
   return Array.from(set);
 }
 
+type Data = {
+  status: JSX.Element;
+  id: number;
+  name: string;
+  last_update: string;
+  series_id: number;
+  timepoints: number;
+}
+
 const Home: NextPage = () => {
   const [selected, dispatch] = useReducer(reducer, []);
-  const transformedData = data.map(item => ({ ...item, status: <StatusChip status={item.status as Status} /> }))
+  const transformedData: Data[] = data.map(item => ({ ...item, status: <StatusChip status={item.status as Status} /> }))
+  const [order, setOrder] = useState<ColumnOrdering<Data>>({
+    column: 'status',
+    order: 'desc',
+  })
 
   return (
     <>
@@ -40,6 +54,8 @@ const Home: NextPage = () => {
         { name: "series_id", label: "Series ID" },
         { name: "timepoints" }
         ]}
+        order={order}
+        setOrder={setOrder}
         selected={selected}
         dispatch={dispatch}
       />

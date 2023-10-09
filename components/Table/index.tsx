@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import mergeClasses from '../../utils/mergeClasses';
 import Checkbox from '../forms/Checkbox';
+import ColumnTitle, { ColumnOrdering } from './ColumnTitle';
 import styles from './Table.module.css';
 
 export type BaseObject = Record<string, ReactNode> & { id: number };
@@ -8,6 +9,11 @@ export type BaseObject = Record<string, ReactNode> & { id: number };
 type Props<T extends BaseObject> = {
 	data: T[];
 	columns: { name: (Extract<keyof T, string> | 'select'), label?: string, width?: string }[];
+	order: {
+		column: Extract<keyof T, string>;
+		order: 'asc' | 'desc';
+	}
+	setOrder: (value: ColumnOrdering<T>) => void;
 	selected?: number[];
 	dispatch: React.Dispatch<{
 		type: 'add' | 'remove' | 'selectAll' | 'removeAll';
@@ -15,7 +21,7 @@ type Props<T extends BaseObject> = {
 	}>
 };
 
-const Table = <T extends BaseObject>({ data, columns, selected, dispatch }: Props<T>): ReactNode => {
+const Table = <T extends BaseObject>({ data, columns, order, setOrder, selected, dispatch }: Props<T>): ReactNode => {
 	if (columns.some(col => col.name === "select") && !selected) throw new Error("Select column requires `selected` object.")
 	return (
 		<div className={styles.table} style={{
@@ -26,23 +32,33 @@ const Table = <T extends BaseObject>({ data, columns, selected, dispatch }: Prop
 			{columns.map(
 				(col) => {
 					const allSelected = selected!.length === data.length;
-
-					return (<div
-						key={col.name}
-						className={mergeClasses(styles.cell, styles.darkCell, styles.firstRow)}
-					>
-						{
-							col.name === "select"
-								? <Checkbox
+					if (col.name === 'select') {
+						return (
+							<div
+								key={col.name}
+								className={mergeClasses(styles.cell, styles.darkCell)}
+							>
+								<Checkbox
 									id="select-all"
 									checked={allSelected}
 									onChange={() => dispatch({ type: (allSelected ? 'removeAll' : 'selectAll') })}
 									checkTitle='Select all'
 									uncheckTitle='Unselect all'
 								/>
-								: col.label || col.name.charAt(0).toUpperCase() + col.name.slice(1).replaceAll("_", " ")
-						}
-					</div>)
+							</div>)
+					}
+
+					return (
+						<ColumnTitle
+							key={col.name}
+							name={col.name}
+							order={order}
+							setOrder={(value) => setOrder({ column: col.name as Extract<keyof T, string>, order: value })
+							}>
+							{col.label || col.name.charAt(0).toUpperCase() + col.name.slice(1).replaceAll("_", " ")}
+						</ColumnTitle>
+					)
+
 				}
 			)}
 			{/* Rest */}
