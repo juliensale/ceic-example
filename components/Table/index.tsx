@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import mergeClasses from '../../utils/mergeClasses';
 import Checkbox from '../forms/Checkbox';
 import styles from './Table.module.css';
 
@@ -6,7 +7,7 @@ export type BaseObject = Record<string, ReactNode> & { id: number };
 
 type Props<T extends BaseObject> = {
 	data: T[];
-	columns: { name: (Extract<keyof T, string> | 'select'), label?: string }[];
+	columns: { name: (Extract<keyof T, string> | 'select'), label?: string, width?: string }[];
 	selected?: number[];
 	dispatch: React.Dispatch<{
 		type: 'add' | 'remove' | 'selectAll' | 'removeAll';
@@ -18,7 +19,7 @@ const Table = <T extends BaseObject>({ data, columns, selected, dispatch }: Prop
 	if (columns.some(col => col.name === "select") && !selected) throw new Error("Select column requires `selected` object.")
 	return (
 		<div className={styles.table} style={{
-			gridTemplateColumns: `repeat(${columns.length}, 1fr)`
+			gridTemplateColumns: columns.map(c => c.width || "auto").join(" ")
 		}}>
 
 			{/* First line */}
@@ -28,7 +29,7 @@ const Table = <T extends BaseObject>({ data, columns, selected, dispatch }: Prop
 
 					return (<div
 						key={col.name}
-						className={styles.darkCell}
+						className={mergeClasses(styles.cell, styles.darkCell, styles.firstRow)}
 					>
 						{
 							col.name === "select"
@@ -53,7 +54,7 @@ const Table = <T extends BaseObject>({ data, columns, selected, dispatch }: Prop
 
 							return (<div
 								key={`${obj.id}-${col}`}
-								className={idx % 2 === 1 ? styles.darkCell : undefined}
+								className={mergeClasses(styles.cell, idx % 2 === 1 ? styles.darkCell : undefined)}
 							>
 								{
 									col.name === "select"

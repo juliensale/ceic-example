@@ -33,8 +33,8 @@ const Home: NextPage = () => {
       <Filters />
       <Table
         data={transformedData}
-        columns={[{ name: "select" },
-        { name: "status" },
+        columns={[{ name: "select", width: "3rem" },
+        { name: "status", width: '8rem' },
         { name: "name" },
         { name: "last_update" },
         { name: "series_id", label: "Series ID" },
