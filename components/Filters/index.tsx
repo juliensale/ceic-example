@@ -1,5 +1,7 @@
 import { FC, useState } from 'react';
+import IconButton from '../buttons/Icon';
 import DropDown, { DropDownCheckbox, DropDownItem } from '../forms/DropDown';
+import RefreshIcon from '../icons/Refresh';
 import styles from './Filters.module.css';
 
 const Filters: FC = () => {
@@ -14,6 +16,7 @@ const Filters: FC = () => {
 				<DropDownCheckbox value="2">Up to date</DropDownCheckbox>
 			</DropDown>
 			<div className={styles.subContainer}>
+				<IconButton><RefreshIcon /></IconButton>
 				<DropDown
 					title={`${autoRefresh} sec`}
 					type="select"
