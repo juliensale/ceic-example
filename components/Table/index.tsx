@@ -7,6 +7,8 @@ import styles from './Table.module.css';
 
 export type BaseObject = Record<string, ReactNode> & { id: number };
 
+
+
 type Props<T extends BaseObject> = {
 	data: T[] | undefined;
 	columns: { name: (Extract<keyof T, string> | 'select'), label?: string, width?: string }[];
@@ -22,17 +24,9 @@ type Props<T extends BaseObject> = {
 	}>
 };
 
-const Table = <T extends BaseObject>({ data, columns, order, setOrder, selected, dispatch }: Props<T>): ReactNode => {
-	if (columns.some(col => col.name === "select") && !selected) throw new Error("Select column requires `selected` object.")
-
-	if (!data) return <Loader size="1.5rem" />;
-
+const FirstLine = <T extends BaseObject>({ data, columns, order, setOrder, selected, dispatch }: Props<T> & { data: T[] }): ReactNode => {
 	return (
-		<div className={styles.table} style={{
-			gridTemplateColumns: columns.map(c => c.width || "auto").join(" ")
-		}}>
-
-			{/* First line */}
+		<>
 			{columns.map(
 				(col) => {
 					const allSelected = selected!.length === data.length;
@@ -65,29 +59,60 @@ const Table = <T extends BaseObject>({ data, columns, order, setOrder, selected,
 
 				}
 			)}
-			{/* Rest */}
-			{
-				data.map((obj, idx) =>
-					columns.map(
-						col => {
-							const checked = selected!.includes(obj.id);
+		</>
+	)
+}
 
-							return (<div
+const Line = <T extends BaseObject>({ obj, idx, columns, selected, dispatch }: { obj: T, idx: number } & Pick<Props<T>, 'columns' | 'selected' | 'dispatch'>) => {
+	return (
+		<>
+			{columns.map(
+				col => {
+					const checked = selected!.includes(obj.id);
+
+					if (col.name === 'select') {
+						return (
+							<div
 								key={`${obj.id}-${col.name}`}
 								className={mergeClasses(styles.cell, idx % 2 === 1 ? styles.darkCell : undefined)}
 							>
-								{
-									col.name === "select"
-										? <Checkbox
-											id={`${obj.id}-${col.name}`}
-											checked={checked}
-											onChange={() => dispatch({ type: checked ? 'remove' : 'add', value: obj.id, })}
-										/>
-										: obj[col.name]
-								}
-							</div>)
-						}
-					))
+								<Checkbox
+									id={`${obj.id}-${col.name}`}
+									checked={checked}
+									onChange={() => dispatch({ type: checked ? 'remove' : 'add', value: obj.id, })}
+								/>
+
+							</div>
+
+						)
+					}
+
+					return (<div
+						key={`${obj.id}-${col.name}`}
+						className={mergeClasses(styles.cell, idx % 2 === 1 ? styles.darkCell : undefined)}
+					>
+						{obj[col.name]}
+					</div>)
+				}
+			)
+			}
+		</>
+	)
+}
+
+const Table = <T extends BaseObject>({ data, columns, order, setOrder, selected, dispatch }: Props<T>): ReactNode => {
+	if (columns.some(col => col.name === "select") && !selected) throw new Error("Select column requires `selected` object.")
+
+	if (!data) return <Loader size="1.5rem" />;
+
+	return (
+		<div className={styles.table} style={{
+			gridTemplateColumns: columns.map(c => c.width || "auto").join(" ")
+		}}>
+
+			<FirstLine {...{ data, columns, order, setOrder, selected, dispatch }} />
+			{
+				data.map((obj, idx) => <Line key={`line-${obj.id}`} {...{ obj, idx, columns, selected, dispatch }} />)
 			}
 		</div>
 	)
