@@ -1,0 +1,16 @@
+.button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.button svg {
+  fill: rgba(162, 160, 179, 1);
+  height: 1rem;
+  width: 1rem;
+  transition: 0.2s;
+}
+.button:hover svg {
+  fill: rgb(134, 132, 148);
+}
