@@ -73,13 +73,13 @@ const Table = <T extends BaseObject>({ data, columns, order, setOrder, selected,
 							const checked = selected!.includes(obj.id);
 
 							return (<div
-								key={`${obj.id}-${col}`}
+								key={`${obj.id}-${col.name}`}
 								className={mergeClasses(styles.cell, idx % 2 === 1 ? styles.darkCell : undefined)}
 							>
 								{
 									col.name === "select"
 										? <Checkbox
-											id={`${obj.id}-${col}`}
+											id={`${obj.id}-${col.name}`}
 											checked={checked}
 											onChange={() => dispatch({ type: checked ? 'remove' : 'add', value: obj.id, })}
 										/>
