@@ -1,13 +1,16 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import IconButton from '../buttons/Icon';
 import DropDown, { DropDownCheckbox, DropDownItem } from '../forms/DropDown';
 import RefreshIcon from '../icons/Refresh';
 import styles from './Filters.module.css';
 
-const Filters: FC = () => {
-	// autorefresh in seconds
-	const [autoRefresh, setAutoRefresh] = useState<number>(30)
-	const [statusFilter, setStatusFilter] = useState<string[]>([]);
+type FiltersProps = {
+	autoRefresh: number,
+	setAutoRefresh: (value: number) => void;
+	statusFilter: string[];
+	setStatusFilter: (value: string[]) => void;
+}
+const Filters: FC<FiltersProps> = ({ autoRefresh, setAutoRefresh, statusFilter, setStatusFilter }) => {
 	return (
 		<div className={styles.container}>
 			<DropDown title="Status" type="checkbox" value={statusFilter} setValue={(value) => setStatusFilter(value)}>

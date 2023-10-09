@@ -1,6 +1,6 @@
 import axios from 'axios';
 import type { NextPage } from 'next';
-import { useMemo, useReducer, useState } from 'react';
+import { ChangeEvent, useMemo, useReducer, useState } from 'react';
 import useSWR from 'swr';
 import Filters from '../components/Filters';
 import SearchBar from '../components/SearchBar';
@@ -43,22 +43,31 @@ type TransformedDataObject = {
 }
 
 const Home: NextPage = () => {
-  const { data } = useSWR<DataObject[]>('/api/series', (url: string) => axios.get(url).then((res) => res.data))
+  const [search, setSearch] = useState<string>('');
+  const [order, setOrder] = useState<ColumnOrdering<TransformedDataObject>>({
+    column: 'status',
+    order: 'desc',
+  });
+  // autorefresh in seconds
+  const [autoRefresh, setAutoRefresh] = useState<number>(30)
+  const [statusFilter, setStatusFilter] = useState<string[]>([]);
+
+  const { data } = useSWR<DataObject[]>(
+    `/api/series?search=${search}&orderCol=${order.column}&orderDir=${order.order}${statusFilter.map(value => `&status=${value}`)
+    }`,
+    (url: string) => axios.get(url).then((res) => res.data),
+    { refreshInterval: autoRefresh * 1000 })
   const transformedData: TransformedDataObject[] | undefined = useMemo(
     () => data?.map(item => ({ ...item, status: <StatusChip status={item.status} /> }))
     , [data]
   )
 
-  const [order, setOrder] = useState<ColumnOrdering<TransformedDataObject>>({
-    column: 'status',
-    order: 'desc',
-  })
   const [selected, dispatch] = useReducer(getReducer(transformedData || []), []);
 
   return (
     <>
-      <SearchBar />
-      <Filters />
+      <SearchBar value={search} onChange={(e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)} />
+      <Filters {...{ autoRefresh, setAutoRefresh, statusFilter, setStatusFilter }} />
       <Table
         data={transformedData}
         columns={[{ name: "select", width: "3rem" },
